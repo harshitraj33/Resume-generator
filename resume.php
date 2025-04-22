@@ -149,31 +149,62 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Generator</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        h1 {
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            width: 100%;
             text-align: center;
-            color: #333;
-            margin-top: 20px;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
 
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            width: 100%;
             background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         label {
             font-weight: bold;
-            color: #555;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
         }
 
         input[type="text"],
@@ -183,36 +214,67 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         textarea,
         input[type="file"] {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0 20px 0;
+            padding: 12px;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus,
+        input[type="file"]:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
         }
 
         button {
-            background-color: #007bff;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         footer {
             text-align: center;
             margin-top: 20px;
-            color: #777;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            color: #ddd;
         }
     </style>
 </head>
 <body>
-    <h1>Resume Generator</h1>
+    <header>Resume Generator</header>
     <div class="container">
         <form method="POST" action="" enctype="multipart/form-data">
             <label for="name">Name:</label>
@@ -283,7 +345,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div>
     <footer>
-        <p>&copy; 2025 Resume Generator. All rights reserved.( *** )</p>
+        <p>&copy; 2025 Resume Generator. All rights reserved.</p>
     </footer>
 </body>
 </html>
